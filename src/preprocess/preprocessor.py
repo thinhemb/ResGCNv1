@@ -6,6 +6,13 @@ from .rotation import *
 
 # Thanks to SHI Lei for the released code on Github (https://github.com/lshiwjx/2s-AGCN)
 def pre_normalization(data, print_bar=True, zaxis=[0, 1], xaxis=[8, 4]):
+    '''
+    N = số lượng mẫu
+    C = 3 (số kênh)
+    T = Tổng số bước chấm / Số bước chấm tối đa
+    V = Số khớp để đại diện cho khung xương
+    M = Số người
+    '''
     N, C, T, V, M = data.shape
     s = np.transpose(data, [0, 4, 2, 3, 1])  # N, C, T, V, M  to  N, M, T, V, C
 

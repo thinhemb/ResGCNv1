@@ -1,3 +1,5 @@
+
+
 import os, yaml, argparse
 from time import strftime
 
@@ -43,22 +45,22 @@ def init_parameters():
     parser = argparse.ArgumentParser(description='Skeleton-based Action Recognition')
 
     # Setting
-    parser.add_argument('--config', '-c', type=str, default='', help='ID of the using config', required=True)
-    parser.add_argument('--gpus', '-g', type=int, nargs='+', default=[], help='Using GPUs')
-    parser.add_argument('--seed', '-s', type=int, default=1, help='Random seed')
+    parser.add_argument('--config', '-c', type=str, default='1012', help='ID of the using config', required=True)#ID của Sử dụng config
+    parser.add_argument('--gpus', '-g', type=int, nargs='+', default=[], help='Using GPUs') #Sử dụng GPU
+    parser.add_argument('--seed', '-s', type=int, default=1, help='Random seed') # thoi gian nghi
     parser.add_argument('--debug', '-db', default=False, action='store_true', help='Debug')
-    parser.add_argument('--pretrained_path', '-pp', type=str, default='', help='Path to pretrained models')
+    parser.add_argument('--pretrained_path', '-pp', type=str, default='/home/thinh_do/Workplace/ResGCNv1/pretrained/1012_pa_resgcn_n51_r4_ntu_xset120.pth.tar', help='Path to pretrained models')#Đường dẫn đến các mô hình được đào tạo trước
     parser.add_argument('--work_dir', '-w', type=str, default='', help='Work dir')
-    parser.add_argument('--no_progress_bar', '-np', default=False, action='store_true', help='Do not show progress bar')
-    parser.add_argument('--path', '-p', type=str, default='', help='Path to save preprocessed skeleton files')
+    parser.add_argument('--no_progress_bar', '-np', default=False, action='store_true', help='Do not show progress bar') #Không hiển thị thanh tiến trình
+    parser.add_argument('--path', '-p', type=str, default='', help='Path to save preprocessed skeleton files')#Đường dẫn để lưu các tệp bộ xương được xử lý trước
 
     # Processing
-    parser.add_argument('--resume', '-r', default=False, action='store_true', help='Resume from checkpoint')
-    parser.add_argument('--evaluate', '-e', default=False, action='store_true', help='Evaluate')
-    parser.add_argument('--extract', '-ex', default=False, action='store_true', help='Extract')
-    parser.add_argument('--visualization', '-v', default=False, action='store_true', help='Visualization')
-    parser.add_argument('--generate_data', '-gd', default=False, action='store_true', help='Generate skeleton data')
-    parser.add_argument('--generate_label', '-gl', default=False, action='store_true', help='Only generate label')
+    parser.add_argument('--resume', '-r', default=False, action='store_true', help='Resume from checkpoint')#Tiếp tục từ trạm kiểm soát
+    parser.add_argument('--evaluate', '-e', default=False, action='store_true', help='Evaluate')  #Đánh giá
+    parser.add_argument('--extract', '-ex', default=False, action='store_true', help='Extract')#Trích xuất
+    parser.add_argument('--visualization', '-v', default=False, action='store_true', help='Visualization') #Hình dung
+    parser.add_argument('--generate_data', '-gd', default=True, action='store_true', help='Generate skeleton data')#Tạo dữ liệu bộ xương
+    parser.add_argument('--generate_label', '-gl', default=True, action='store_true', help='Only generate label') #Chỉ tạo nhãn
 
     # Visualization
     parser.add_argument('--visualization_class', '-vc', type=int, default=0, help='Class: 1 ~ 60, 0 means true class')
@@ -66,20 +68,20 @@ def init_parameters():
     parser.add_argument('--visualization_frames', '-vf', type=int, nargs='+', default=[], help='Frame: 0 ~ max_frame-1')
 
     # Dataloader
-    parser.add_argument('--dataset', '-d', type=str, default='', help='Select dataset')
-    parser.add_argument('--dataset_args', default=dict(), help='Args for creating dataset')
+    parser.add_argument('--dataset', '-d', type=str, default='', help='Select dataset')#Chọn tập dữ liệu
+    parser.add_argument('--dataset_args', default=dict(), help='Args for creating dataset')#Args để tạo tập dữ liệu
 
     # Model
     parser.add_argument('--model_type', '-mt', type=str, default='', help='Model type')
-    parser.add_argument('--model_args', default=dict(), help='Args for creating model')
+    parser.add_argument('--model_args', default=dict(), help='Args for creating model')#Args để tạo tập dữ liệu
 
     # Optimizer
-    parser.add_argument('--optimizer', '-o', type=str, default='', help='Initial optimizer')
+    parser.add_argument('--optimizer', '-o', type=str, default='', help='Initial optimizer')#Trình tối ưu hóa ban đầu
     parser.add_argument('--optimizer_args', default=dict(), help='Args for optimizer')
 
     # LR_Scheduler
-    parser.add_argument('--lr_scheduler', '-ls', type=str, default='', help='Initial learning rate scheduler')
-    parser.add_argument('--scheduler_args', default=dict(), help='Args for scheduler')
+    parser.add_argument('--lr_scheduler', '-ls', type=str, default='', help='Initial learning rate scheduler')#Trình lập lịch tốc độ học ban đầu
+    parser.add_argument('--scheduler_args', default=dict(), help='Args for scheduler')#Args dành cho trình lập lịch
 
     return parser
 

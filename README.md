@@ -2,7 +2,9 @@
 
 ## 1 Paper Details
 
-Yi-Fan Song, Zhang Zhang, Caifeng Shan and Liang Wang. **Stronger, Faster and More Explainable: A Graph Convolutional Baseline for Skeleton-based Action Recognition** ACM MultiMedia, 2020. [[ACMMM 2020]](https://dl.acm.org/doi/abs/10.1145/3394171.3413802) [[Arxiv Preprint]](https://arxiv.org/pdf/2010.09978.pdf)
+Yi-Fan Song, Zhang Zhang, Caifeng Shan and Liang Wang. **Stronger, Faster and More Explainable: A Graph Convolutional Baseline for Skeleton-based Action Recognition.** ACM MultiMedia, 2020. [[ACMMM 2020]](https://dl.acm.org/doi/abs/10.1145/3394171.3413802) [[Arxiv Preprint]](https://arxiv.org/pdf/2010.09978.pdf)
+
+Latest version (ResGCN v2.0): [[Github]](https://github.com/yfsong0709/EfficientGCNv1) [[Arxiv Preprint]](https://arxiv.org/pdf/2106.15125.pdf)
 
 The following pictures are the pipeline of ResGCNv1 and the illustration of PartAtt block, respectively.
 <div align="center">
@@ -43,7 +45,7 @@ These models can be downloaded from [BaiduYun]() (Extraction code: **d3ea**) or 
 
 Before training and evaluating, there are some parameters should be noticed.
 
-* (1) **'--config'** or **'-c'**: The config of RA-GCN. You must use this parameter in the command line or the program will output an error. There are 8 configs given in the **configs** folder, which can be illustrated in the following tabel.
+* (1) **'--config'** or **'-c'**: The config of ResGCN. You must use this parameter in the command line or the program will output an error. There are 16 configs given in the **configs** folder, which can be illustrated in the following table.
 
 | config    | 1001   | 1002   | 1003    | 1004    | 1005   | 1006   | 1007    | 1008    |
 | :-------: | :----: | :----: | :-----: | :-----: | :----: | :----: | :-----: | :-----: |
@@ -134,15 +136,15 @@ Top-1 Accuracy for the provided models on **NTU RGB+D 60 & 120** datasets.
 | models        | parameters | NTU Xsub  | NTU Xview | NTU Xsub120 | NTU Xset120 |
 | :-----------: | :--------: | :-------: | :-------: | :---------: | :---------: |
 | ResGCN-N51    | 0.77M      | 89.1%     | 93.5%     | 84.0%       | 84.2%       |
-| ResGCN-B19    | 1.14M      | 90.3%     | 95.6%     | 86.6%       | 87.1%       |
-| PA-ResGCN-N51 | 3.26M      | 90.0%     | 94.8%     | 85.2%       | 85.7%       |
+| PA-ResGCN-N51 | 1.14M      | 90.3%     | 95.6%     | 86.6%       | 87.1%       |
+| ResGCN-B19    | 3.26M      | 90.0%     | 94.8%     | 85.2%       | 85.7%       |
 | PA-ResGCN-B19 | 3.64M      | **90.9%** | **96.0%** | **87.3%**   | **88.3%**   |
 
 ## 6 Citation and Contact
 
 If you have any question, please send e-mail to `yifan.song@cripac.ia.ac.cn`.
 
-Please cite our paper when you use this code in your reseach.
+Please cite our paper when you use this code in your research.
 ```
 @inproceedings{song2020stronger,
   author    = {Song, Yi-Fan and Zhang, Zhang and Shan, Caifeng and Wang, Liang},
@@ -155,5 +157,12 @@ Please cite our paper when you use this code in your reseach.
   address   = {New York, NY, USA},
   url       = {https://doi.org/10.1145/3394171.3413802},
   doi       = {10.1145/3394171.3413802},
+}
+
+@article{song2021efficientgcn,
+  author    = {Song, Yi-Fan and Zhang, Zhang and Shan, Caifeng and Wang, Liang},
+  title     = {EfficientGCN: Constructing Stronger and Faster Baselines for Skeleton-based Action Recognition},
+  journal   = {arXiv:2106.15125},
+  year      = {2021},
 }
 ```

@@ -1,0 +1,12 @@
+43: falling down
+45: chest pain	
+52: pushing
+79: stuffy nose/difficulty breathing		
+107: wield knife	
+108: knock over	
+109: grab stuff	
+110: shoot with gun
+114: carry object
+116: follow
+
+	

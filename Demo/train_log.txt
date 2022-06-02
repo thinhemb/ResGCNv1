@@ -1,0 +1,16 @@
+2021-11-27 00:56:23,463 - INFO - Epoch(val) [78][258]	top1_acc: 0.8590, top5_acc: 0.9703
+2021-11-27 00:58:06,864 - INFO - Epoch [79][100/627]	lr: 1.000e-03, eta: 0:13:00, time: 1.034, data_time: 0.409, memory: 6590, top1_acc: 0.9994, top5_acc: 1.0000, loss_cls: 0.0076, loss: 0.0076
+2021-11-27 00:59:10,516 - INFO - Epoch [79][200/627]	lr: 1.000e-03, eta: 0:11:52, time: 0.637, data_time: 0.001, memory: 6590, top1_acc: 0.9992, top5_acc: 1.0000, loss_cls: 0.0077, loss: 0.0077
+2021-11-27 01:00:14,276 - INFO - Epoch [79][300/627]	lr: 1.000e-03, eta: 0:10:44, time: 0.638, data_time: 0.000, memory: 6590, top1_acc: 0.9986, top5_acc: 1.0000, loss_cls: 0.0092, loss: 0.0092
+2021-11-27 01:01:18,020 - INFO - Epoch [79][400/627]	lr: 1.000e-03, eta: 0:09:37, time: 0.637, data_time: 0.000, memory: 6590, top1_acc: 0.9994, top5_acc: 1.0000, loss_cls: 0.0083, loss: 0.0083
+2021-11-27 01:02:21,876 - INFO - Epoch [79][500/627]	lr: 1.000e-03, eta: 0:08:29, time: 0.639, data_time: 0.002, memory: 6590, top1_acc: 0.9998, top5_acc: 1.0000, loss_cls: 0.0070, loss: 0.0070
+2021-11-27 01:03:26,169 - INFO - Epoch [79][600/627]	lr: 1.000e-03, eta: 0:07:21, time: 0.643, data_time: 0.000, memory: 6590, top1_acc: 0.9991, top5_acc: 1.0000, loss_cls: 0.0083, loss: 0.0083
+2021-11-27 01:05:29,379 - INFO - Epoch [80][100/627]	lr: 1.000e-03, eta: 0:05:56, time: 1.052, data_time: 0.424, memory: 6590, top1_acc: 0.9992, top5_acc: 1.0000, loss_cls: 0.0079, loss: 0.0079
+2021-11-27 01:06:33,292 - INFO - Epoch [80][200/627]	lr: 1.000e-03, eta: 0:04:48, time: 0.639, data_time: 0.000, memory: 6590, top1_acc: 0.9998, top5_acc: 1.0000, loss_cls: 0.0072, loss: 0.0072
+2021-11-27 01:07:37,146 - INFO - Epoch [80][300/627]	lr: 1.000e-03, eta: 0:03:41, time: 0.639, data_time: 0.000, memory: 6590, top1_acc: 0.9995, top5_acc: 1.0000, loss_cls: 0.0077, loss: 0.0077
+2021-11-27 01:08:40,768 - INFO - Epoch [80][400/627]	lr: 1.000e-03, eta: 0:02:33, time: 0.636, data_time: 0.000, memory: 6590, top1_acc: 0.9998, top5_acc: 1.0000, loss_cls: 0.0072, loss: 0.0072
+2021-11-27 01:09:44,846 - INFO - Epoch [80][500/627]	lr: 1.000e-03, eta: 0:01:25, time: 0.641, data_time: 0.000, memory: 6590, top1_acc: 0.9998, top5_acc: 1.0000, loss_cls: 0.0078, loss: 0.0078
+2021-11-27 01:10:48,676 - INFO - Epoch [80][600/627]	lr: 1.000e-03, eta: 0:00:18, time: 0.638, data_time: 0.000, memory: 6590, top1_acc: 0.9995, top5_acc: 1.0000, loss_cls: 0.0072, loss: 0.0072
+2021-11-27 00:56:23,457 - INFO - 
+top1_acc	0.8660
+top5_acc	0.9703

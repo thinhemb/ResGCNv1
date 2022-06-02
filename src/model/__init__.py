@@ -50,6 +50,6 @@ def create(model_type, **kwargs):
         [model, structure], reduction = model_split, 'r1'
     if not (model in __model.keys() and structure in __structure.keys() and reduction in __reduction.keys()):
         logging.info('')
-        logging.error('Error: Do NOT exist this model_type: {}!'.foramt(model_type))
+        logging.error('Error: Do NOT exist this model_type: {}!'.format(model_type))
         raise ValueError()
     return __model[model](**(__structure[structure]), **(__reduction[reduction]), **kwargs)

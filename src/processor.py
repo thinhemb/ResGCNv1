@@ -1,3 +1,4 @@
+
 import logging, torch, numpy as np
 from tqdm import tqdm
 from time import time
@@ -11,7 +12,7 @@ class Processor(Initializer):
     def train(self, epoch):
         self.model.train()
         start_train_time = time()
-        train_acc, num_sample = 0, 0
+        num_top1, num_sample = 0, 0
         train_iter = self.train_loader if self.no_progress_bar else tqdm(self.train_loader, dynamic_ncols=True)
         for num, (x, y, _) in enumerate(train_iter):
             self.optimizer.zero_grad()
@@ -33,7 +34,7 @@ class Processor(Initializer):
             # Calculating Recognition Accuracies
             num_sample += x.size(0)
             reco_top1 = out.max(1)[1]
-            train_acc += reco_top1.eq(y).sum().item()
+            num_top1 += reco_top1.eq(y).sum().item()
 
             # Showing Progress
             lr = self.optimizer.param_groups[0]['lr']
@@ -48,11 +49,11 @@ class Processor(Initializer):
                 train_iter.set_description('Loss: {:.4f}, LR: {:.4f}'.format(loss.item(), lr))
 
         # Showing Train Results
-        train_acc /= num_sample
+        train_acc = num_top1 / num_sample
         if self.scalar_writer:
             self.scalar_writer.add_scalar('train_acc', train_acc, self.global_step)
-        logging.info('Epoch: {}/{}, Training accuracy: {:.2%}, Training time: {:.2f}s'.format(
-            epoch+1, self.max_epoch, train_acc, time()-start_train_time
+        logging.info('Epoch: {}/{}, Training accuracy: {:d}/{:d}({:.2%}), Training time: {:.2f}s'.format(
+            epoch+1, self.max_epoch, num_top1, num_sample, train_acc, time()-start_train_time
         ))
         logging.info('')
 
@@ -60,7 +61,7 @@ class Processor(Initializer):
         self.model.eval()
         start_eval_time = time()
         with torch.no_grad():
-            acc_top1, acc_top5 = 0, 0
+            num_top1, num_top5 = 0, 0
             num_sample, eval_loss = 0, []
             cm = np.zeros((self.num_class, self.num_class))
             eval_iter = self.eval_loader if self.no_progress_bar else tqdm(self.eval_loader, dynamic_ncols=True)
@@ -80,9 +81,9 @@ class Processor(Initializer):
                 # Calculating Recognition Accuracies
                 num_sample += x.size(0)
                 reco_top1 = out.max(1)[1]
-                acc_top1 += reco_top1.eq(y).sum().item()
+                num_top1 += reco_top1.eq(y).sum().item()
                 reco_top5 = torch.topk(out,5)[1]
-                acc_top5 += sum([y[n] in reco_top5[n,:] for n in range(x.size(0))])
+                num_top5 += sum([y[n] in reco_top5[n,:] for n in range(x.size(0))])
 
                 # Calculating Confusion Matrix
                 for i in range(x.size(0)):
@@ -93,13 +94,13 @@ class Processor(Initializer):
                     logging.info('Batch: {}/{}'.format(num+1, len(self.eval_loader)))
 
         # Showing Evaluating Results
-        acc_top1 /= num_sample
-        acc_top5 /= num_sample
+        acc_top1 = num_top1 / num_sample
+        acc_top5 = num_top5 / num_sample
         eval_loss = sum(eval_loss) / len(eval_loss)
         eval_time = time() - start_eval_time
         eval_speed = len(self.eval_loader) * self.eval_batch_size / eval_time / len(self.args.gpus)
-        logging.info('Top-1 accuracy: {:.2%}, Top-5 accuracy: {:.2%}, Mean loss:{:.4f}'.format(
-            acc_top1, acc_top5, eval_loss
+        logging.info('Top-1 accuracy: {:d}/{:d}({:.2%}), Top-5 accuracy: {:d}/{:d}({:.2%}), Mean loss:{:.4f}'.format(
+            num_top1, num_sample, acc_top1, num_top5, num_sample, acc_top5, eval_loss
         ))
         logging.info('Evaluating time: {:.2f}s, Speed: {:.2f} sequnces/(second*GPU)'.format(
             eval_time, eval_speed

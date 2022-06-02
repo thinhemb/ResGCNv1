@@ -1,0 +1,15 @@
+5: drop
+7: throw
+24: kicking something
+41: sneeze/cough
+42: staggering
+44: headache
+46: back pain
+47: neck pain
+48: nausea/vomiting
+50: punch/slap
+51: kicking
+92: move heavy objects
+95: capitulate
+98: arm swings
+106: hit with object

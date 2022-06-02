@@ -2,7 +2,7 @@
 gpus: [0,1]
 seed: 1
 debug: False
-pretrained_path: './pretrained'
+pretrained_path: '/pretrained'
 work_dir: './workdir'
 no_progress_bar: False
 
@@ -19,9 +19,9 @@ dataset_args:
     train_batch_size: 32
     eval_batch_size: 64
     preprocess: False
-    path: /data1/yifan.song/SkeletonPreprocess
-    ntu60_data_path: /data1/yifan.song/NTU_RGBD/nturgbd_skeletons_s001_to_s017
-    ntu120_data_path: /data1/yifan.song/NTU_RGBD/nturgbd_skeletons_s018_to_s032
+    path: /home/thinh_do/Workplace/ResGCNv1/resources
+    ntu60_data_path: /home/thinh_do/Workplace/ResGCNv1/NTU_RGBD/nturgbd_skeletons_s001_to_s017
+    ntu120_data_path: /home/thinh_do/Workplace/ResGCNv1/NTU_RGBD/nturgbd_skeletons_s018_to_s032
 
 # Model
 # pa, ca, fa, sa, pca, psa
